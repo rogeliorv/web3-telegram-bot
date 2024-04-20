@@ -4,6 +4,7 @@ import { Button, Input } from '@nextui-org/react';
 import GoogleMapReact from 'google-map-react';
 import JSConfetti from 'js-confetti';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useState } from 'react';
@@ -274,6 +275,12 @@ const HomePage = () => {
                     />
                     <h1 className='text-center'>Withdrawal succesful</h1>
                     <p className='text-center text-lg'>$ 1500.00</p>
+                    <p className='overflow-hidden text-ellipsis whitespace-nowrap'>
+                      View on blockchain explorer:
+                    </p>
+                    <Link href='https://www.blockchain.com/explorer/addresses/btc/bc1qw9fm787vw8chlc6rqttuhw7yv4d7sne2w5t223mk07ttq9wnr6jqqskzy9'>
+                      bc1qw9fm787vw8chlc6rqttuhw7yv4d7s...
+                    </Link>
                   </div>
                 )}
               </DrawerTitle>
