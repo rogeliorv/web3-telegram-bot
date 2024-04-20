@@ -265,9 +265,16 @@ const HomePage = () => {
                   </>
                 )}
                 {currentStep === SUCCESS_STEP && (
-                  <>
+                  <div className='flex flex-col items-center justify-center'>
+                    <Image
+                      width={250}
+                      height={250}
+                      alt='withdrawal successful'
+                      src='/assets/images/greentick.png'
+                    />
                     <h1 className='text-center'>Withdrawal succesful</h1>
-                  </>
+                    <p className='text-center text-lg'>$ 1500.00</p>
+                  </div>
                 )}
               </DrawerTitle>
             </DrawerHeader>
