@@ -99,7 +99,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className='mx-auto'>
-          <div className='mx-auto w-[100%] h-[90.9vh]' id='locationsMap'>
+          <div className='mx-auto w-[100%] h-[99.9vh]' id='locationsMap'>
             <GoogleMapReact
               yesIWantToUseGoogleMapApiInternals
               bootstrapURLKeys={{

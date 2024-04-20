@@ -23,7 +23,7 @@ const theme = createTheme({
       primaryLightHover: 'white',
       // primaryLightActive: '#99a0a3',
       primaryLightContrast: '$green600',
-      primary: '#ec4755',
+      primary: '#618BFF',
       // primaryBorder: '$green500',
       // primaryBorderHover: '$green600',
       primarySolidHover: 'white',
@@ -32,7 +32,7 @@ const theme = createTheme({
       gradient:
         'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
       // link: '#ec4755',
-      secondary: '#f56a79',
+      secondary: '#B1C6FF',
       // ...  more colors
     },
     space: {},
