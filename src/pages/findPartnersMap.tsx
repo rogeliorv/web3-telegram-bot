@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button, Input } from '@nextui-org/react';
 import GoogleMapReact from 'google-map-react';
+import JSConfetti from 'js-confetti';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -187,7 +188,7 @@ const HomePage = () => {
                 {currentStep === ARE_YOU_HERE_STEP && shownPartner && (
                   <>
                     <h1 className='text-center text-xl'>Are you here?</h1>
-                    <p>{shownPartner.name}</p>
+                    <p className='text-center'>{shownPartner.name}</p>
                     <div className='my-8 flex flex-row items-center justify-start'>
                       <div className='mx-auto flex flex-row justify-center gap-x-4 align-middle'>
                         <Button
@@ -236,7 +237,7 @@ const HomePage = () => {
                 )}
                 {currentStep === CONFIRMATION_STEP && (
                   <>
-                    <h1 className='text-center'>Use this with the merchant</h1>
+                    <h1 className='text-center'>Show code to merchant</h1>
                     <Image
                       className='mx-auto'
                       width={250}
@@ -247,6 +248,20 @@ const HomePage = () => {
                     <p className='text-center text-xl'>
                       Confirmation Code: 4 5 8 9 0
                     </p>
+                    <Button
+                      size='xl'
+                      className='mx-auto'
+                      auto
+                      onClick={() => {
+                        setCurrentStep(SUCCESS_STEP);
+                        const jsConfetti = new JSConfetti();
+                        jsConfetti.addConfetti({
+                          emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+                        });
+                      }}
+                    >
+                      Confirm Withdrawal
+                    </Button>
                   </>
                 )}
                 {currentStep === SUCCESS_STEP && (
