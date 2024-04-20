@@ -1,11 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import { Button, Input } from '@nextui-org/react';
 import GoogleMapReact from 'google-map-react';
+import { useRouter } from 'next/router';
 import * as React from 'react';
+import {useState} from 'react';
 
+import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '@/components/drawer';
 // ADDED
 import { HeaderPopover } from '@/components/Header';
 import Layout from '@/components/layout/Layout';
-import { LocationInMap } from '@/components/LocationsInMap';
+import { LocationInMap, MapElement } from '@/components/LocationsInMap';
 import Seo from '@/components/Seo';
 
 import Canvas from '../components/Canvas';
@@ -25,35 +29,69 @@ export const color = {
 // };
 
 
-const USDT_SVG = (
-  <div className='h-4 w-4 bg-blue-500'>
-    <img alt='USDT Logo' src='/assets/images/USDT.png' width='24' height='24'/>
+const MoneyExchangeIcon = (
+  <div className='h-8 w-8 bg-black rounded-full flex flex-row items-center justify-center'>
+    <img alt='Exchange Icon' className='rounded-full' src='/assets/images/moneyExchangeIcon3.webp' width='24' height='24'/>
   </div>
 );
 
+const mapElementsList = [
+  {
+    latitude: '59.4332938',
+    longitude: '24.75131621',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4306331',
+    longitude: '24.7590682',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4274467',
+    longitude: '24.7740125',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4350179',
+    longitude: '24.7553705',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4383326',
+    longitude: '24.7590282',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4324466',
+    longitude: '24.7427446',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4394744',
+    longitude: '24.7397645',
+    marker: MoneyExchangeIcon,
+  },
+  {
+    latitude: '59.4402411',
+    longitude: '24.737643',
+    marker: MoneyExchangeIcon,
+  },
+];
+
+
+const ARE_YOU_HERE_STEP = 'ARE_YOU_HERE';
+const AMOUNT_STEP = 'AMOUNT_STEP';
+const SUCCESS_STEP = 'SUCCESS_STEP';
 
 const HomePage = () => {
-  const mapElementsList = [
-    {
-      latitude: '59.4332938',
-      longitude: '24.75131621',
-      marker: USDT_SVG,
-    },
-    {
-      latitude: '59.4332938',
-      longitude: '24.75131621',
-      marker: USDT_SVG,
-    },
-    {
-      latitude: '59.4332938',
-      longitude: '24.75131621',
-      marker: USDT_SVG,
-    },
-  ];
+
+  const [shownPartner, setShownPartner] = useState<MapElement>();
+  const [currentStep, setCurrentStep] = useState<string>(ARE_YOU_HERE_STEP);
+  const router = useRouter();
 
   return (
     <Layout>
-      <Seo templateTitle='Travel lists and travel recommended spots' />
+      <Seo templateTitle='Find a partner for money Withdrawal' />
       <div className='overflow-hidden bg-background'>
         <div className='relative z-20 mx-auto  w-full bg-background bg-transparent'>
           <div className='absolute right-0 px-3 pt-3' id='header'>
@@ -107,7 +145,7 @@ const HomePage = () => {
                     lat={parseFloat(mapElement.latitude)}
                     lng={parseFloat(mapElement.longitude)}
                     onExpandClick={() => {
-                      // Something here
+                      setShownPartner(mapElement);
                     }}
                     marker={mapElement.marker}
                   />
@@ -116,6 +154,50 @@ const HomePage = () => {
             </GoogleMapReact>
           </div>
         </div>
+        <Drawer open={!!shownPartner}>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle className='text-left'>
+                { currentStep === ARE_YOU_HERE_STEP &&
+                  <>
+                  <h1 className='text-xl text-center'>Are you here?</h1>
+                  <div className='flex flex-row items-center justify-start'>
+                    <div className='flex flex-row align-middle justify-center gap-x-4 mx-auto'>
+                      <Button size='xl' auto onClick={() => {
+                        setCurrentStep(AMOUNT_STEP);
+                      }}>Yes</Button>
+                      <Button size='xl' auto onClick={() => {
+                        setCurrentStep(AMOUNT_STEP);
+                      }}>No</Button>
+                    </div>
+                  </div>
+                  </>
+                }
+                { currentStep === AMOUNT_STEP &&
+                <>
+                  <h1 className='text-xl mb-8 text-center'>How much do you want to withdraw?</h1>
+                  <div className='mx-auto flex flex-row items-center justify-center'>
+                    <Input size='xl' bordered initialValue="$0.00" />
+                  </div>
+                  <div className='mx-auto flex flex-row items-center justify-center'>
+                    <Button className='my-3' size='xl' auto onClick={() => {
+                      setCurrentStep(SUCCESS_STEP);
+                    }}>Send
+                    </Button>
+                  </div>
+                </>
+                }
+                { currentStep === SUCCESS_STEP &&
+                <>
+                  <h1 className='text-center'>Success!</h1>
+                </>
+                }
+              </DrawerTitle>
+            </DrawerHeader>
+            <DrawerFooter className='-px-4'>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
         <Canvas />
       </div>
     </Layout>

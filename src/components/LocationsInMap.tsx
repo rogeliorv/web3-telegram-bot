@@ -2,7 +2,11 @@
 import React, { ReactNode } from 'react';
 import { FaMapMarkerAlt as MapMarkerIcon } from 'react-icons/fa';
 
-import { MapElement } from './ListMap';
+export interface MapElement {
+  latitude: string;
+  longitude: string;
+  marker?: ReactNode;
+}
 
 export const LocationInMap = <T extends MapElement>({
   mapElement,
