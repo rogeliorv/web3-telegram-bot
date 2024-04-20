@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { FaMapMarkerAlt as MapMarkerIcon } from 'react-icons/fa';
 
 export interface MapElement {
+  name: string;
   latitude: string;
   longitude: string;
   marker?: ReactNode;
