@@ -35,6 +35,8 @@ class MessageHandler {
 
   private async sendStartOptions() {
 
+    console.log(`${this.appUrl}/findPartnersMap`);
+
     const reply_markup: InlineKeyboardMarkup = {
       inline_keyboard:[
         [

@@ -39,6 +39,10 @@ export default class CustomDocument extends Document {
           />
           {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> */}
           <Script src="https://telegram.org/js/telegram-web-app.js"></Script>
+          <Script
+            strategy='beforeInteractive'
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_PUB_KEY}&libraries=places`}
+          />
         </Head>
         <body>
           <Main />
