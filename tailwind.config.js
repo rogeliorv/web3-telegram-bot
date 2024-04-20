@@ -28,8 +28,8 @@ module.exports = {
         primary: ['Inter', ...fontFamily.sans],
       },
       colors: {
-        primary: '#ec4755',
-        secondary: '#2E998A',
+        primary: '#618bff',
+        secondary: '#b1c6ff',
         tertiary: '#f9d3d9',
         border: '#1a2e35',
         background: '#ffffff',
