@@ -10,6 +10,12 @@ const BASE_URL = 'https://api.telegram.org/bot';
 
 class TelegramApiClient extends BaseClient {
   constructor() {
+
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+    if(!telegramBotToken) {
+      throw new Error('You need to set TELEGRAM_BOT_TOKEN in your environment');
+    }
+
     const url = `${BASE_URL}${process.env.TELEGRAM_BOT_TOKEN}`;
     super(url);
   }
