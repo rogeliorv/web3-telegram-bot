@@ -24,8 +24,8 @@ class MessageHandler {
       inline_keyboard:[
         [
         {
-          text: 'Start being a human-ATM',
-          callback_data: 'start_merchant',
+          text: 'Open Map',
+          web_app: { url: `${this.appUrl}/findPartnersMap`},
         },
         {
           text: 'Stop being a human-ATM',
@@ -55,11 +55,11 @@ class MessageHandler {
 
   public async handleRequest() {
     if(this.message) {
-      console.debug('Handling message');
+      console.log('Handling message');
       return await this.handleMessage();
     }
     else if(this.callbackQuery) {
-      console.debug('Handling callback query');
+      console.log('Handling callback query');
       return await this.handleCallbackQuery();
     }
   }
@@ -77,6 +77,7 @@ export default async function handleWebhookRequest(req: NextApiRequest, res: Nex
       return;
     }
 
+    console.log('Creating handler');
     const handler = new MessageHandler(req.body);
     await handler.handleRequest();
     res.status(200).end();
