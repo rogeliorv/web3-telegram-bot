@@ -40,14 +40,19 @@ class MessageHandler {
     const reply_markup: InlineKeyboardMarkup = {
       inline_keyboard:[
         [
-        {
+      /*  {
           text: 'Withdraw Cash',
           web_app: { url: `${this.appUrl}/findPartnersMap`},
-        },
+        },*/
+          {
+            text: 'Withdraw Cash',
+            web_app: { url: `${this.appUrl}/withdrawAmount`},
+          },
         {
           text: 'Deposit Cash',
           web_app: { url: `${this.appUrl}/findPartnersMap`},
         }
+
       ],
       ]
     };

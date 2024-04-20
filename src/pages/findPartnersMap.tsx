@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import {useState} from 'react';
 
-import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '@/components/drawer';
+import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '@/components/Drawer';
 // ADDED
 import { HeaderPopover } from '@/components/Header';
 import Layout from '@/components/layout/Layout';
