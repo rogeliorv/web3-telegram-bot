@@ -8,20 +8,19 @@ import { BaseClient, extractErrorFromClientException } from '@/clients/BaseClien
 
 const BASE_URL = 'https://api.telegram.org/bot';
 
-class TelegramApiClient extends BaseClient {
-  constructor() {
-
-    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+export class TelegramApiClient extends BaseClient {
+  constructor(telegramBotToken: string) {
     if(!telegramBotToken) {
-      throw new Error('You need to set TELEGRAM_BOT_TOKEN in your environment');
+      throw new Error('You need to specify the telegram bot token');
     }
 
-    const url = `${BASE_URL}${process.env.TELEGRAM_BOT_TOKEN}`;
+    const url = `${BASE_URL}${telegramBotToken}`;
     super(url);
   }
 
   public async sendMessage(chat_id: number, text: string, reply_markup?: InlineKeyboardMarkup) {
     try {
+      console.log('sending message');
       const result = await this.client.post(`sendMessage`, {
         chat_id,
         text,
@@ -40,5 +39,3 @@ class TelegramApiClient extends BaseClient {
     }
   }
 }
-
-export const telegramClient = new TelegramApiClient();
