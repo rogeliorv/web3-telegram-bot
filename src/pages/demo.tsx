@@ -1,5 +1,6 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
@@ -7,8 +8,6 @@ import * as React from 'react';
 import { HeaderPopover } from '@/components/Header';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
-
-import Canvas from '../components/Canvas';
 
 export const color = {
   'google-blue 100': `#4285F4`,
@@ -38,10 +37,9 @@ const HomePage = () => {
         </div>
         <div className='mx-auto text-center'>
           <div className='mx-auto h-[600px] w-[50%]' id='locationsMap'>
-            <video controls>
-              <source src='/assets/demo.mp4' type='video/mp4' />
-              Your browser does not support the video tag
-            </video>
+            <Link href='https://youtube.com/shorts/4J-mYox_5ig?feature=share'>
+              Demo video
+            </Link>
           </div>
         </div>
       </div>
