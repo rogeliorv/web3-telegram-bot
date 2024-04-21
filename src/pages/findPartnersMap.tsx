@@ -362,8 +362,8 @@ const HomePage = () => {
                 {currentStep === SUCCESS_STEP && (
                   <div className='flex flex-col items-center justify-center'>
                     <Image
-                      width={250}
-                      height={250}
+                      width={200}
+                      height={200}
                       alt='withdrawal successful'
                       src='/assets/images/greentick.png'
                     />
