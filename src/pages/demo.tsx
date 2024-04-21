@@ -36,8 +36,11 @@ const HomePage = () => {
           </div>
         </div>
         <div className='mx-auto text-center'>
-          <div className='mx-auto h-[600px] w-[50%]' id='locationsMap'>
-            <Link href='https://youtube.com/shorts/4J-mYox_5ig?feature=share'>
+          <div className='mx-auto' id='locationsMap'>
+            <Link
+              className='text-3xl '
+              href='https://youtube.com/shorts/4J-mYox_5ig?feature=share'
+            >
               Demo video
             </Link>
           </div>
