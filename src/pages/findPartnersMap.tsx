@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useState } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
 import {
   Drawer,
@@ -23,7 +24,6 @@ import { LocationInMap, MapElement } from '@/components/LocationsInMap';
 import Seo from '@/components/Seo';
 
 import Canvas from '../components/Canvas';
-import { FaArrowRight } from 'react-icons/fa';
 
 export const color = {
   'google-blue 100': `#4285F4`,
@@ -104,6 +104,7 @@ const mapElementsList = [
 
 const ARE_YOU_HERE_STEP = 'ARE_YOU_HERE';
 const AMOUNT_STEP = 'AMOUNT_STEP';
+const HOW_TO_PAY_STEP = 'HOW_TO_PAY_STEP';
 const SUCCESS_STEP = 'SUCCESS_STEP';
 const CONFIRMATION_STEP = 'CONFIRMATION_STEP';
 
@@ -188,89 +189,175 @@ const HomePage = () => {
             <DrawerHeader>
               <DrawerTitle className='text-left'>
                 {currentStep === ARE_YOU_HERE_STEP && shownPartner && (
-                   <div className='flex flex-col gap-4 justify-center items-center'>
-                   <div className='flex gap-4'>
-                     <Image
-                     src="/assets/images/rkiosk.jpeg"
-                     width={100}
-                     height={100}
-                     alt="R-Kiosk"
-                     className='rounded-[16px]'
-                     />
-                     <div className='flex flex-col'>
-                     <h3 className='text-center'>{shownPartner.name}</h3>
-                     <p>Street Name</p>
-                     <p>M-S 08-23</p>
-                     </div>
-                     </div>
-                     <div className='my-8 flex flex-row items-center justify-start'>
-                       <div className='mx-auto flex flex-row items-center justify-center gap-x-4 align-middle'>
-                         <Button
-                           size='xl'
-                           auto
-                           iconRight={<FaArrowRight />}
-                           onClick={() => {
-                             setCurrentStep(AMOUNT_STEP);
-                           }}
-                         >
-                           I Am In This Location
-                         </Button>
-                       </div>
-                     </div>
-                   </div>
- 
+                  <div className='flex flex-col items-center justify-center gap-4'>
+                    <div className='flex gap-4'>
+                      <Image
+                        src='/assets/images/rkiosk.jpeg'
+                        width={100}
+                        height={100}
+                        alt='R-Kiosk'
+                        className='rounded-[16px]'
+                      />
+                      <div className='flex flex-col'>
+                        <h3 className='text-center'>{shownPartner.name}</h3>
+                        <p>Street Name</p>
+                        <p>M-S 08-23</p>
+                      </div>
+                    </div>
+                    <div className='my-8 flex flex-row items-center justify-start'>
+                      <div className='mx-auto flex flex-row items-center justify-center gap-x-4 align-middle'>
+                        <Button
+                          size='xl'
+                          auto
+                          iconRight={<FaArrowRight />}
+                          onClick={() => {
+                            setCurrentStep(AMOUNT_STEP);
+                          }}
+                        >
+                          I Am In This Location
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 )}
                 {currentStep === AMOUNT_STEP && (
-                   <>
-                   <h1 className='mb-8 text-center text-xl'>
-                     How much do you want to withdraw?
-                   </h1>
-                   <div className='mx-auto flex flex-row items-center justify-center'>
-                     <Input size='xl' bordered initialValue='$20.00' />
-                   </div>
-                   <div className='mx-auto flex flex-row items-center justify-center'>
-                     <Button
-                       className='my-3'
-                       size='xl'
-                       auto
-                       onClick={() => {
-                         setCurrentStep(CONFIRMATION_STEP);
-                       }}
-                     >
-                       Confirm
-                     </Button>
-                   </div>
-                 </>
-
+                  <>
+                    <h1 className='mb-8 text-center text-xl'>
+                      How much do you want to withdraw?
+                    </h1>
+                    <div className='mx-auto flex flex-row items-center justify-center'>
+                      <Input size='xl' bordered initialValue='$20.00' />
+                    </div>
+                    <div className='mx-auto flex flex-row items-center justify-center'>
+                      <Button
+                        className='my-3'
+                        size='xl'
+                        auto
+                        onClick={() => {
+                          setCurrentStep(HOW_TO_PAY_STEP);
+                        }}
+                      >
+                        Confirm
+                      </Button>
+                    </div>
+                  </>
                 )}
+                {currentStep === HOW_TO_PAY_STEP && (
+                  <>
+                    <h1 className='mb-8 text-center text-xl'>
+                      How much do you want to withdraw?
+                    </h1>
+                    <div className='mx-auto flex flex-col items-center justify-center gap-y-4'>
+                      <div className='flex w-[300px] flex-row items-center justify-center rounded-3xl border-2 border-slate-300 px-8 py-4'>
+                        <img
+                          alt=''
+                          className='h-8 w-8 rounded-full'
+                          src='/assets/images/eth.jpeg'
+                        />
+                        <span className='mx-2 font-bold'>ETH</span>
+                        <span className='mx-2'>0.0071</span>
+                        <span className='mx-2'>$24.50</span>
+                      </div>
+
+                      <div className='flex w-[300px] flex-row items-center justify-center rounded-3xl border-2 border-slate-300 px-8 py-4'>
+                        <img
+                          alt=''
+                          className='h-8 w-8 rounded-full'
+                          src='/assets/images/wbtc.jpg'
+                        />
+                        <span className='mx-2 w-[120px] font-bold'>WTBC</span>
+                        <span className='mx-2'>0.0018</span>
+                        <span className='mx-2'>$117.3</span>
+                      </div>
+
+                      <div className='flex w-[300px] flex-row items-center justify-center rounded-3xl border-2 border-slate-300 px-8 py-4'>
+                        <img
+                          alt=''
+                          className='h-8 w-8 rounded-full'
+                          src='/assets/images/pepe.jpg'
+                        />
+                        <span className='mx-2 w-[120px] font-bold'>PEPE</span>
+                        <span className='mx-2'>7.3M</span>
+                        <span className='mx-2'>$43.78</span>
+                      </div>
+
+                      <div className='flex w-[300px] flex-row items-center justify-center rounded-3xl border-2 border-slate-300 px-8 py-4'>
+                        <img
+                          alt=''
+                          className='h-8 w-8 rounded-full'
+                          src='/assets/images/nft1.jpeg'
+                        />
+                        <span className='mx-2 w-[120px] font-bold'>BASED</span>
+                        <span className='mx-2'>#0027</span>
+                        <span className='mx-2'>$7.21</span>
+                      </div>
+
+                      <div className='flex w-[300px] flex-row items-center justify-center rounded-3xl border-2 border-slate-300 px-8 py-4'>
+                        <img
+                          alt=''
+                          className='h-8 w-8 rounded-full'
+                          src='/assets/images/nft2.jpeg'
+                        />
+                        <span className='mx-2 w-[120px] font-bold'>BORED</span>
+                        <span className='mx-2'>#0754</span>
+                        <span className='mx-2'>$2.09</span>
+                      </div>
+                    </div>
+                    <div className='my-6 text-center text-3xl'>
+                      Selected: $ 129
+                    </div>
+                    <div className='mx-auto flex flex-row items-center justify-center'>
+                      <Button
+                        className='my-3'
+                        size='xl'
+                        onClick={() => {
+                          setCurrentStep(CONFIRMATION_STEP);
+                        }}
+                      >
+                        Pay
+                      </Button>
+                    </div>
+                    <div className='mx-auto text-center'>
+                      <div className='flex flex-row items-center justify-center'>
+                        <span>Powered by</span>
+                        <img
+                          className='w-[200px]'
+                          src='/assets/images/shellprotocol.jpeg'
+                          alt='shellprotocol'
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
+
                 {currentStep === CONFIRMATION_STEP && (
                   <>
-                  <h2 className='text-center'>Show code to merchant</h2>
-                  <Image
-                    className='mx-auto'
-                    width={250}
-                    height={250}
-                    alt='qr code'
-                    src='/assets/images/qrcode.png'
-                  />
-                  <p className='text-center text-xl'>
-                    Confirmation Code: 4 5 8 9 0
-                  </p>
-                  <Button
-                    size='xl'
-                    className='mx-auto'
-                    auto
-                    onClick={() => {
-                      setCurrentStep(SUCCESS_STEP);
-                      const jsConfetti = new JSConfetti();
-                      jsConfetti.addConfetti({
-                        emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
-                      });
-                    }}
-                  >
-                    Confirm Withdrawal
-                  </Button>
-                </>
+                    <h2 className='text-center'>Show code to merchant</h2>
+                    <Image
+                      className='mx-auto'
+                      width={250}
+                      height={250}
+                      alt='qr code'
+                      src='/assets/images/qrcode.png'
+                    />
+                    <p className='text-center text-xl'>
+                      Confirmation Code: 4 5 8 9 0
+                    </p>
+                    <Button
+                      size='xl'
+                      className='mx-auto'
+                      auto
+                      onClick={() => {
+                        setCurrentStep(SUCCESS_STEP);
+                        const jsConfetti = new JSConfetti();
+                        jsConfetti.addConfetti({
+                          emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+                        });
+                      }}
+                    >
+                      Confirm Withdrawal
+                    </Button>
+                  </>
                 )}
                 {currentStep === SUCCESS_STEP && (
                   <div className='flex flex-col items-center justify-center'>
