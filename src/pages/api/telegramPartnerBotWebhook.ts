@@ -39,12 +39,8 @@ class MessageHandler {
       inline_keyboard: [
         [
           {
-            text: 'Open Map',
-            web_app: { url: `${this.appUrl}/findPartnersMap` },
-          },
-          {
-            text: 'Stop being a human-ATM',
-            callback_data: 'stop_merchant',
+            text: 'Open Merchant App',
+            web_app: { url: `${this.appUrl}/merchantFlow` },
           },
         ],
       ],
