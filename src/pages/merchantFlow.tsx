@@ -112,7 +112,7 @@ const HomePage = () => {
             </>
           )}
           {currentStep === SUCCESS_STEP && (
-            <div className='flex flex-col items-center justify-center'>
+            <div className='flex flex-col w-full items-center justify-center'>
               <Image
                 width={250}
                 height={250}
@@ -124,7 +124,7 @@ const HomePage = () => {
               <p className='overflow-hidden text-ellipsis whitespace-nowrap'>
                 View on blockchain explorer:
               </p>
-              <Link href='https://www.blockchain.com/explorer/addresses/btc/bc1qw9fm787vw8chlc6rqttuhw7yv4d7sne2w5t223mk07ttq9wnr6jqqskzy9'>
+              <Link className={"w-full text-center"} href='https://www.blockchain.com/explorer/addresses/btc/bc1qw9fm787vw8chlc6rqttuhw7yv4d7sne2w5t223mk07ttq9wnr6jqqskzy9'>
                 bc1qw9fm787vw8chlc6rqttuhw7yv4d7s...
               </Link>
             </div>

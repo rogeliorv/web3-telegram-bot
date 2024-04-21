@@ -17,8 +17,6 @@ const WAITING_STEP = 'WAITING_STEP';
 const CONFIRMATION_STEP = 'CONFIRMATION_STEP';
 const SUCCESS_STEP = 'SUCCESS_STEP';
 
-let formAmount:any;
-
 const AmountPage = () => {
     const [formAmount, setAmount] = useState();
 
@@ -26,25 +24,20 @@ const AmountPage = () => {
     const [currentStep, setCurrentStep] = useState<string>(WAITING_STEP);
     const router = useRouter();
 
-
-
     const handleSubmit = async (formData: any) => {
 
         const formAmount = {
             amount: formData.get("amount")
-
         }
-
     }
-
     return (
 
         <div className='overflow-hidden bg-background'>
 
-            <div className='mx-auto mt-6 w-full px-2 md:mt-8 md:max-w-5xl md:px-4'>
+            <div className='mx-auto mt-6 w-full px-2 md:mt-8 md:max-w-5xl md:p-2'>
                 <>
                     <div
-                        className='mx-auto mb-12 flex flex-col items-center justify-center text-4xl sm:flex-row sm:text-4xl'>
+                        className='mx-auto mb-12 flex flex-col items-center justify-center text-4xl sm:flex-row sm:text-2xl'>
                         {currentStep === WAITING_STEP && (
 
 
